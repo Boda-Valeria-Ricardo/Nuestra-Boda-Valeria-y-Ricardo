@@ -1,0 +1,2298 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Valeria & Ricardo | Nuestra invitación</title>
+
+
+<!-- FUENTES -->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: #f8f5f0;
+
+    color: #3d3a36;
+
+    font-family: 'Montserrat', sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   PANTALLA DEL SOBRE
+===================================================== */
+
+#envelope-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #fffaf3 0%,
+            #eadfd2 55%,
+            #d5c7b7 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+#envelope-screen.hidden {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* LUZ DE FONDO */
+
+.glow {
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.45);
+
+    filter: blur(40px);
+}
+
+
+/* =====================================================
+   TEXTO DEL SOBRE
+===================================================== */
+
+.envelope-intro {
+
+    position: absolute;
+
+    top: 9%;
+
+    text-align: center;
+
+    z-index: 20;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+
+.envelope-intro.hide {
+
+    opacity: 0;
+
+    transform:
+        translateY(-25px);
+}
+
+
+.envelope-mini {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 12px;
+}
+
+
+.envelope-intro h1 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 44px;
+
+    font-weight: 500;
+}
+
+
+.envelope-intro p {
+
+    font-size: 12px;
+
+    margin-top: 8px;
+
+    opacity: .7;
+}
+
+
+/* =====================================================
+   SOBRE
+===================================================== */
+
+.envelope-container {
+
+    position: relative;
+
+    width: min(390px, 88vw);
+
+    height: 270px;
+
+    perspective: 1200px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+.envelope {
+
+    position: absolute;
+
+    inset: 0;
+
+    transform-style: preserve-3d;
+}
+
+
+/* PARTE TRASERA */
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #b89b76;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 25px 50px
+        rgba(70,50,35,.22);
+}
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter {
+
+    position: absolute;
+
+    width: 84%;
+
+    height: 82%;
+
+    left: 8%;
+
+    bottom: 5%;
+
+    background: #fffdf9;
+
+    border-radius: 2px;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.08);
+
+    transition:
+        1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.letter-content {
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        .8s ease .55s;
+}
+
+
+.letter h2 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+
+.letter p {
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   BOTÓN ABRIR INVITACIÓN
+===================================================== */
+
+.open-invitation {
+
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 13px 24px;
+
+    background: #9b7b55;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    border: none;
+
+    transition: .3s;
+}
+
+
+.open-invitation:hover {
+
+    background: #765b3d;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   SOLAPA
+===================================================== */
+
+.flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 58%;
+
+    background: #c8ad8a;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:
+        top center;
+
+    transition:
+        1.15s cubic-bezier(.2,.8,.2,1);
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   LADOS DEL SOBRE
+===================================================== */
+
+.envelope-left,
+.envelope-right,
+.envelope-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 4;
+}
+
+
+.envelope-left {
+
+    background: #b2936d;
+
+    clip-path:
+        polygon(
+            0 0,
+            52% 50%,
+            0 100%
+        );
+}
+
+
+.envelope-right {
+
+    background: #a98b67;
+
+    clip-path:
+        polygon(
+            100% 0,
+            48% 50%,
+            100% 100%
+        );
+}
+
+
+.envelope-bottom {
+
+    background: #bfa17c;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 42%,
+            100% 100%
+        );
+}
+
+
+/* =====================================================
+   SELLO
+===================================================== */
+
+.seal {
+
+    position: absolute;
+
+    width: 60px;
+
+    height: 60px;
+
+    left: 50%;
+
+    top: 51%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #8f6944;
+
+    color: #f8ead7;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 25px;
+
+    z-index: 7;
+
+    box-shadow:
+        0 5px 15px
+        rgba(50,30,15,.2);
+
+    transition:
+        .5s;
+}
+
+
+/* =====================================================
+   INDICACIÓN
+===================================================== */
+
+.tap-here {
+
+    position: absolute;
+
+    bottom: 7%;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: .7;
+
+    animation:
+        pulse 1.8s infinite;
+
+    transition:
+        opacity .5s;
+}
+
+
+.tap-here.hide {
+
+    opacity: 0;
+}
+
+
+/* =====================================================
+   SOBRE ABIERTO
+===================================================== */
+
+.envelope-open .flap {
+
+    transform:
+        rotateX(180deg);
+
+    z-index: 1;
+}
+
+
+.envelope-open .seal {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.6);
+}
+
+
+.envelope-open .letter {
+
+    transform:
+        translateY(-100px);
+
+    z-index: 6;
+
+    height: 94%;
+}
+
+
+.envelope-open .letter-content {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+.envelope-open
+.envelope-left,
+
+.envelope-open
+.envelope-right,
+
+.envelope-open
+.envelope-bottom {
+
+    z-index: 3;
+}
+
+
+/* =====================================================
+   INVITACIÓN
+===================================================== */
+
+#wedding {
+
+    display: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 1.5s ease;
+}
+
+
+#wedding.show {
+
+    display: block;
+
+    opacity: 1;
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+section {
+
+    padding: 90px 20px;
+
+    text-align: center;
+}
+
+
+.container {
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+.section-title {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 52px;
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+
+.gold-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: #b59a6a;
+
+    margin:
+        20px auto 35px;
+}
+
+
+p {
+
+    line-height: 1.9;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   PORTADA DE LA BODA
+===================================================== */
+
+.hero {
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            rgba(0,0,0,.30),
+            rgba(0,0,0,.38)
+        ),
+
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80")
+
+        center / cover no-repeat;
+}
+
+
+.hero-content {
+
+    animation:
+        appear 2s ease;
+
+    padding: 20px;
+}
+
+
+.small-title {
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 25px;
+}
+
+
+.names {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(58px, 12vw, 110px);
+
+    font-weight: 500;
+
+    line-height: .9;
+}
+
+
+.ampersand {
+
+    font-size: 45px;
+
+    font-style: italic;
+
+    margin: 12px;
+}
+
+
+.date {
+
+    margin-top: 30px;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+}
+
+
+.scroll {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    animation:
+        moveDown 2s infinite;
+}
+
+
+/* =====================================================
+   FRASE
+===================================================== */
+
+.quote {
+
+    background: #eee9e1;
+}
+
+
+.quote-text {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 33px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.message {
+
+    background: #f8f5f0;
+}
+
+
+/* =====================================================
+   CUENTA REGRESIVA
+===================================================== */
+
+.countdown {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 40px;
+}
+
+
+.time-box {
+
+    width: 105px;
+
+    padding: 20px 10px;
+
+    background: white;
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,.07);
+}
+
+
+.number {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 46px;
+
+    color: #9a8053;
+}
+
+
+.label {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   EVENTOS
+===================================================== */
+
+.event {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+
+.event-card {
+
+    background: white;
+
+    padding: 40px 25px;
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,.06);
+}
+
+
+.event-icon {
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+
+.event-card h3 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 31px;
+
+    margin-bottom: 15px;
+}
+
+
+.button {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 13px 25px;
+
+    background: #9a8053;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+
+.button:hover {
+
+    background: #76613e;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   GALERÍA
+===================================================== */
+
+.gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 40px;
+}
+
+
+.gallery img {
+
+    width: 100%;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    transition: .5s;
+}
+
+
+.gallery img:hover {
+
+    transform:
+        scale(1.03);
+}
+
+
+/* =====================================================
+   VESTIMENTA
+===================================================== */
+
+.dress-code {
+
+    background: #eee9e1;
+}
+
+
+.dress-icon {
+
+    font-size: 52px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   CONFIRMACIÓN
+===================================================== */
+
+.rsvp {
+
+    background: #3d3a36;
+
+    color: white;
+}
+
+
+.rsvp .gold-line {
+
+    background: #c6a96b;
+}
+
+
+.rsvp-button {
+
+    background: white;
+
+    color: #3d3a36;
+}
+
+
+.rsvp-button:hover {
+
+    background: #eee9e1;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    background: #292724;
+
+    color: white;
+}
+
+
+footer h2 {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 44px;
+
+    font-weight: 400;
+
+    margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   BOTÓN DE MÚSICA
+===================================================== */
+
+.music-button {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #9a8053;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.2);
+}
+
+
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+
+@keyframes pulse {
+
+    50% {
+
+        transform:
+            translateY(5px);
+
+        opacity: .35;
+    }
+}
+
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes moveDown {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,0);
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,10px);
+    }
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media(max-width:700px) {
+
+    .event {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .gallery img {
+
+        height: 220px;
+    }
+
+
+    section {
+
+        padding:
+            70px 18px;
+    }
+
+
+    .section-title {
+
+        font-size: 43px;
+    }
+
+
+    .quote-text {
+
+        font-size: 28px;
+    }
+
+
+    .hero {
+
+        min-height: 650px;
+    }
+
+}
+
+
+@media(max-width:450px) {
+
+    .envelope-intro h1 {
+
+        font-size: 35px;
+    }
+
+
+    .envelope-container {
+
+        height: 235px;
+    }
+
+
+    .letter h2 {
+
+        font-size: 29px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SOBRE INICIAL
+===================================================== -->
+
+<div id="envelope-screen">
+
+
+    <div class="glow"></div>
+
+
+    <!-- TEXTO -->
+
+    <div
+        class="envelope-intro"
+        id="envelopeIntro"
+    >
+
+        <div class="envelope-mini">
+
+            Una sorpresa para ustedes
+
+        </div>
+
+
+        <h1>
+
+            Tenemos algo especial
+
+        </h1>
+
+
+        <p>
+
+            Toquen el sobre para descubrirlo
+
+        </p>
+
+    </div>
+
+
+    <!-- SOBRE -->
+
+    <div
+        class="envelope-container"
+        id="envelope"
+    >
+
+        <div class="envelope">
+
+
+            <!-- PARTE TRASERA -->
+
+            <div class="envelope-back"></div>
+
+
+            <!-- CARTA -->
+
+            <div class="letter">
+
+                <div class="letter-content">
+
+
+                    <h2>
+
+                        Querida familia
+
+                    </h2>
+
+
+                    <p>
+
+                        Hay momentos que queremos
+                        compartir con las personas
+                        que más queremos.
+
+                        <br><br>
+
+                        Por eso hemos preparado
+                        algo muy especial para ustedes.
+
+                    </p>
+
+
+                    <button
+                        class="open-invitation"
+                        onclick="openWedding(event)"
+                    >
+
+                        Abrir invitación
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- SOLAPA -->
+
+            <div class="flap"></div>
+
+
+            <!-- LADOS -->
+
+            <div class="envelope-left"></div>
+
+            <div class="envelope-right"></div>
+
+            <div class="envelope-bottom"></div>
+
+
+            <!-- SELLO -->
+
+            <div class="seal">
+
+                ♥️
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- INDICACIÓN -->
+
+    <div
+        class="tap-here"
+        id="tapHere"
+    >
+
+        Toca el sobre
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     INVITACIÓN
+===================================================== -->
+
+<div id="wedding">
+
+
+    <!-- PORTADA -->
+
+    <header class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="small-title">
+
+                Nos casamos
+
+            </div>
+
+
+            <div class="names">
+
+                Valeria
+
+                <div class="ampersand">
+
+                    &
+
+                </div>
+
+                Ricardo
+
+            </div>
+
+
+            <div class="date">
+
+                14 · NOVIEMBRE · 2026
+
+            </div>
+
+
+        </div>
+
+
+        <div class="scroll">
+
+            ↓ Desliza
+
+        </div>
+
+
+    </header>
+
+
+    <!-- FRASE -->
+
+    <section class="quote">
+
+        <div class="container">
+
+
+            <div class="quote-text">
+
+                “El amor no consiste en mirarse
+                el uno al otro, sino en mirar juntos
+                en la misma dirección.”
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- MENSAJE -->
+
+    <section class="message">
+
+        <div class="container">
+
+
+            <h2 class="section-title">
+
+                Queremos compartir
+                este día contigo
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <p>
+
+                Después de tantos momentos juntos,
+                llegó el momento de comenzar una
+                nueva etapa.
+
+                <br><br>
+
+                Nos haría muy felices contar con tu
+                presencia para celebrar nuestro
+                matrimonio.
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CUENTA REGRESIVA -->
+
+    <section>
+
+
+        <div class="container">
+
+
+            <h2 class="section-title">
+
+                Falta muy poco
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <div class="countdown">
+
+
+                <div class="time-box">
+
+                    <div
+                        class="number"
+                        id="days"
+                    >
+
+                        00
+
+                    </div>
+
+
+                    <div class="label">
+
+                        Días
+
+                    </div>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <div
+                        class="number"
+                        id="hours"
+                    >
+
+                        00
+
+                    </div>
+
+
+                    <div class="label">
+
+                        Horas
+
+                    </div>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <div
+                        class="number"
+                        id="minutes"
+                    >
+
+                        00
+
+                    </div>
+
+
+                    <div class="label">
+
+                        Minutos
+
+                    </div>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <div
+                        class="number"
+                        id="seconds"
+                    >
+
+                        00
+
+                    </div>
+
+
+                    <div class="label">
+
+                        Segundos
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- EVENTOS -->
+
+    <section>
+
+
+        <div class="container">
+
+
+            <h2 class="section-title">
+
+                El gran día
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <div class="event">
+
+
+                <!-- CEREMONIA -->
+
+                <div class="event-card">
+
+
+                    <div class="event-icon">
+
+                        💍
+
+                    </div>
+
+
+                    <h3>
+
+                        Ceremonia
+
+                    </h3>
+
+
+                    <p>
+
+                        4:00 PM
+
+                        <br>
+
+                        Iglesia San José
+
+                        <br>
+
+                        San José, Costa Rica
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="https://www.google.com/maps"
+                        target="_blank"
+                    >
+
+                        Ver ubicación
+
+                    </a>
+
+
+                </div>
+
+
+                <!-- RECEPCIÓN -->
+
+                <div class="event-card">
+
+
+                    <div class="event-icon">
+
+                        🥂
+
+                    </div>
+
+
+                    <h3>
+
+                        Recepción
+
+                    </h3>
+
+
+                    <p>
+
+                        6:00 PM
+
+                        <br>
+
+                        Hacienda Los Ángeles
+
+                        <br>
+
+                        San José, Costa Rica
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="https://www.google.com/maps"
+                        target="_blank"
+                    >
+
+                        Ver ubicación
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERÍA -->
+
+    <section>
+
+
+        <div class="container">
+
+
+            <h2 class="section-title">
+
+                Nuestra historia
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <p>
+
+                Algunos recuerdos
+                de nuestra historia juntos.
+
+            </p>
+
+
+            <div class="gallery">
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
+                    alt="Foto de boda"
+                >
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
+                    alt="Foto de boda"
+                >
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                    alt="Foto de boda"
+                >
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80"
+                    alt="Foto de boda"
+                >
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- VESTIMENTA -->
+
+    <section class="dress-code">
+
+
+        <div class="container">
+
+
+            <div class="dress-icon">
+
+                👔
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Código de vestimenta
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <p>
+
+                Elegante
+
+                <br>
+
+                Formal / Cóctel
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONFIRMACIÓN -->
+
+    <section class="rsvp">
+
+
+        <div class="container">
+
+
+            <h2 class="section-title">
+
+                ¿Nos acompañas?
+
+            </h2>
+
+
+            <div class="gold-line"></div>
+
+
+            <p>
+
+                Confírmanos tu asistencia.
+
+                <br>
+
+                Será un honor celebrar contigo.
+
+            </p>
+
+
+            <a
+                class="button rsvp-button"
+                href="https://wa.me/50688888888?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Valeria%20y%20Ricardo."
+                target="_blank"
+            >
+
+                Confirmar asistencia
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <footer>
+
+
+        <h2>
+
+            Valeria & Ricardo
+
+        </h2>
+
+
+        <p>
+
+            14 · 11 · 2026
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            Con amor, para nuestra familia ❤️
+
+        </p>
+
+
+    </footer>
+
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN DE MÚSICA
+===================================================== -->
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()"
+    style="display:none;"
+>
+
+    ♪
+
+</button>
+
+
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
+
+<audio
+    id="music"
+    loop
+>
+
+    <!--
+
+    PARA AGREGAR MÚSICA:
+
+    Coloca un archivo llamado:
+
+    musica.mp3
+
+    en la misma carpeta que este index.html.
+
+    Después reemplaza esta sección por:
+
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
+
+    -->
+
+</audio>
+
+
+<script>
+
+/* =====================================================
+   ABRIR SOBRE
+===================================================== */
+
+const envelope =
+    document.getElementById("envelope");
+
+
+const envelopeScreen =
+    document.getElementById("envelope-screen");
+
+
+const envelopeIntro =
+    document.getElementById("envelopeIntro");
+
+
+const tapHere =
+    document.getElementById("tapHere");
+
+
+
+envelope.addEventListener(
+    "click",
+    function() {
+
+        if (
+            !envelope.classList.contains(
+                "envelope-open"
+            )
+        ) {
+
+            envelope.classList.add(
+                "envelope-open"
+            );
+
+            envelopeIntro.classList.add(
+                "hide"
+            );
+
+            tapHere.classList.add(
+                "hide"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ABRIR INVITACIÓN
+===================================================== */
+
+function openWedding(event) {
+
+    /*
+       Evita que el clic del botón
+       vuelva a activar el sobre.
+    */
+
+    event.stopPropagation();
+
+
+    const wedding =
+        document.getElementById(
+            "wedding"
+        );
+
+
+    /*
+       Primero ocultamos
+       el contenido del sobre.
+    */
+
+    envelopeScreen.style.opacity = "0";
+
+
+    /*
+       Esperamos la animación
+       y mostramos la invitación.
+    */
+
+    setTimeout(
+        function() {
+
+            envelopeScreen.classList.add(
+                "hidden"
+            );
+
+
+            wedding.style.display =
+                "block";
+
+
+            /*
+               Permite que la invitación
+               aparezca suavemente.
+            */
+
+            setTimeout(
+                function() {
+
+                    wedding.classList.add(
+                        "show"
+                    );
+
+
+                    /*
+                       Lleva al usuario
+                       al inicio de la boda.
+                    */
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+
+
+                    /*
+                       Mostramos botón
+                       de música.
+                    */
+
+                    document.getElementById(
+                        "musicButton"
+                    ).style.display =
+                        "block";
+
+                },
+                100
+            );
+
+        },
+        1200
+    );
+
+}
+
+
+/* =====================================================
+   CUENTA REGRESIVA
+===================================================== */
+
+
+/*
+   FECHA DE LA BODA
+
+   Puedes cambiarla aquí.
+
+   Actualmente:
+   14 de noviembre de 2026
+   a las 4:00 PM
+*/
+
+
+const weddingDate =
+
+    new Date(
+        "November 14, 2026 16:00:00"
+    ).getTime();
+
+
+
+function countdown() {
+
+
+    const now =
+
+        new Date().getTime();
+
+
+    const difference =
+
+        weddingDate - now;
+
+
+    if (
+        difference <= 0
+    ) {
+
+        document.getElementById(
+            "days"
+        ).innerText = "00";
+
+
+        document.getElementById(
+            "hours"
+        ).innerText = "00";
+
+
+        document.getElementById(
+            "minutes"
+        ).innerText = "00";
+
+
+        document.getElementById(
+            "seconds"
+        ).innerText = "00";
+
+
+        return;
+
+    }
+
+
+    const days =
+
+        Math.floor(
+
+            difference /
+            (1000 * 60 * 60 * 24)
+
+        );
+
+
+    const hours =
+
+        Math.floor(
+
+            (
+                difference /
+                (1000 * 60 * 60)
+            ) % 24
+
+        );
+
+
+    const minutes =
+
+        Math.floor(
+
+            (
+                difference /
+                (1000 * 60)
+            ) % 60
+
+        );
+
+
+    const seconds =
+
+        Math.floor(
+
+            (
+                difference / 1000
+            ) % 60
+
+        );
+
+
+    document.getElementById(
+        "days"
+    ).innerText =
+
+        String(days)
+        .padStart(2, "0");
+
+
+    document.getElementById(
+        "hours"
+    ).innerText =
+
+        String(hours)
+        .padStart(2, "0");
+
+
+    document.getElementById(
+        "minutes"
+    ).innerText =
+
+        String(minutes)
+        .padStart(2, "0");
+
+
+    document.getElementById(
+        "seconds"
+    ).innerText =
+
+        String(seconds)
+        .padStart(2, "0");
+
+}
+
+
+setInterval(
+    countdown,
+    1000
+);
+
+
+countdown();
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+const music =
+    document.getElementById(
+        "music"
+    );
+
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+
+
+function toggleMusic() {
+
+
+    if (
+        music.paused
+    ) {
+
+        music.play();
+
+        musicButton.innerHTML =
+            "❚❚";
+
+    }
+
+    else {
+
+        music.pause();
+
+        musicButton.innerHTML =
+            "♪";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
