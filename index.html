@@ -943,7 +943,7 @@ p {
 
 
 /* =====================================================
-   GALERÍA
+   GALERÍA (5 FOTOS)
 ===================================================== */
 
 .gallery {
@@ -953,9 +953,20 @@ p {
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 12px;
+    gap: 15px;
 
-    margin-top: 40px;
+    max-width: 800px;
+
+    margin: 40px auto 0;
+}
+
+
+/* Para que la última foto ocupe el ancho completo si son impares */
+.gallery img:nth-child(5) {
+
+    grid-column: span 2;
+
+    max-height: 400px;
 }
 
 
@@ -1172,13 +1183,19 @@ footer h2 {
     .gallery {
 
         grid-template-columns:
-            1fr 1fr;
+            1fr;
+    }
+
+
+    .gallery img:nth-child(5) {
+
+        grid-column: span 1;
     }
 
 
     .gallery img {
 
-        height: 220px;
+        height: 280px;
     }
 
 
@@ -1761,28 +1778,38 @@ footer h2 {
             <div class="gallery">
 
 
-                <!-- FOTO DE PINTEREST -->
+                <!-- FOTO 1 -->
                 <img
                     src="https://i.pinimg.com/736x/b8/b5/63/b8b5635131185f453f0913c5469d9ac3.jpg"
-                    alt="Foto de Pinterest"
+                    alt="Foto de Pinterest 1"
                 >
 
 
+                <!-- FOTO 2 -->
                 <img
-                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
-                    alt="Foto de boda"
+                    src="https://i.pinimg.com/736x/ee/8f/cf/ee8fcf04eac8d80fcd6533454e7f4a24.jpg"
+                    alt="Foto de Pinterest 2"
                 >
 
 
+                <!-- FOTO 3 -->
                 <img
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
-                    alt="Foto de boda"
+                    src="https://i.pinimg.com/736x/f7/02/00/f70200d359e73548ca052c1111ec25c4.jpg"
+                    alt="Foto de Pinterest 3"
                 >
 
 
+                <!-- FOTO 4 -->
                 <img
-                    src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80"
-                    alt="Foto de boda"
+                    src="https://i.pinimg.com/736x/37/5f/99/375f9903335e7ee932e056a8b1e4e59f.jpg"
+                    alt="Foto de Pinterest 4"
+                >
+
+
+                <!-- FOTO 5 -->
+                <img
+                    src="https://i.pinimg.com/736x/5c/70/ea/5c70eac8dd689be9be54b0fc0caabbf3.jpg"
+                    alt="Foto de Pinterest 5"
                 >
 
 
@@ -1866,7 +1893,7 @@ footer h2 {
 
                 <br><br>
 
-                <strong>Los espacios asignados são personales e intransferibles.</strong>
+                <strong>Los espacios asignados son personales e intransferibles.</strong>
 
                 <br><br>
 
