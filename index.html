@@ -618,7 +618,7 @@ section {
 
 .container {
 
-    max-width: 850px;
+    max-width: 900px;
 
     margin: auto;
 }
@@ -943,15 +943,14 @@ p {
 
 
 /* =====================================================
-   GALERÍA (5 FOTOS DE PINTEREST - TAMAÑO UNIFORME)
+   GALERÍA (5 FOTOS EXACTAS DE PINTEREST EN TAMAÑO UNIFORME)
 ===================================================== */
 
 .gallery {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 15px;
 
@@ -961,17 +960,29 @@ p {
 }
 
 
+/* Centra elegantemente las últimas dos fotos abajo */
+.gallery img:nth-child(4) {
+    grid-column: 1 / 2;
+    transform: translateX(50%);
+}
+
+.gallery img:nth-child(5) {
+    grid-column: 2 / 3;
+    transform: translateX(50%);
+}
+
+
 .gallery img {
 
     width: 100%;
 
-    height: 190px;
+    height: 220px;
 
     object-fit: cover;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 
     transition: .4s;
 }
@@ -979,8 +990,7 @@ p {
 
 .gallery img:hover {
 
-    transform:
-        scale(1.04);
+    transform: scale(1.04);
 }
 
 
@@ -1177,14 +1187,23 @@ footer h2 {
 
     .gallery {
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery img:nth-child(4),
+    .gallery img:nth-child(5) {
+        grid-column: auto;
+        transform: none;
+    }
+
+    .gallery img:nth-child(5) {
+        grid-column: span 2;
     }
 
 
     .gallery img {
 
-        height: 155px;
+        height: 180px;
     }
 
 
@@ -1738,7 +1757,7 @@ footer h2 {
     </section>
 
 
-    <!-- GALERÍA -->
+    <!-- GALERÍA (LAS 5 FOTOS EXACTAS DE LOS NUEVOS ENLACES DE PINTEREST) -->
 
     <section>
 
@@ -1767,35 +1786,35 @@ footer h2 {
             <div class="gallery">
 
 
-                <!-- FOTO 1 DE PINTEREST -->
+                <!-- FOTO 1 (Pin 1580) -->
                 <img
                     src="https://i.pinimg.com/736x/b8/b5/63/b8b5635131185f453f0913c5469d9ac3.jpg"
                     alt="Pinterest 1"
                 >
 
 
-                <!-- FOTO 2 DE PINTEREST -->
+                <!-- FOTO 2 (Pin 1584) -->
                 <img
                     src="https://i.pinimg.com/736x/ee/8f/cf/ee8fcf04eac8d80fcd6533454e7f4a24.jpg"
                     alt="Pinterest 2"
                 >
 
 
-                <!-- FOTO 3 DE PINTEREST -->
+                <!-- FOTO 3 (Pin 1585) -->
                 <img
                     src="https://i.pinimg.com/736x/f7/02/00/f70200d359e73548ca052c1111ec25c4.jpg"
                     alt="Pinterest 3"
                 >
 
 
-                <!-- FOTO 4 DE PINTEREST -->
+                <!-- FOTO 4 (Pin 1591) -->
                 <img
                     src="https://i.pinimg.com/736x/37/5f/99/375f9903335e7ee932e056a8b1e4e59f.jpg"
                     alt="Pinterest 4"
                 >
 
 
-                <!-- FOTO 5 DE PINTEREST -->
+                <!-- FOTO 5 (Pin 1593) -->
                 <img
                     src="https://i.pinimg.com/736x/5c/70/ea/5c70eac8dd689be9be54b0fc0caabbf3.jpg"
                     alt="Pinterest 5"
