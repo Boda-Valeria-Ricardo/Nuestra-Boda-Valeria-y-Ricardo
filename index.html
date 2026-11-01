@@ -943,7 +943,7 @@ p {
 
 
 /* =====================================================
-   GALERÍA (5 FOTOS)
+   GALERÍA (5 FOTOS DE PINTEREST - TAMAÑO UNIFORME)
 ===================================================== */
 
 .gallery {
@@ -951,22 +951,13 @@ p {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
     gap: 15px;
 
-    max-width: 800px;
+    max-width: 850px;
 
     margin: 40px auto 0;
-}
-
-
-/* Para que la última foto ocupe el ancho completo si son impares */
-.gallery img:nth-child(5) {
-
-    grid-column: span 2;
-
-    max-height: 400px;
 }
 
 
@@ -974,18 +965,22 @@ p {
 
     width: 100%;
 
-    height: 300px;
+    height: 190px;
 
     object-fit: cover;
 
-    transition: .5s;
+    border-radius: 6px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    transition: .4s;
 }
 
 
 .gallery img:hover {
 
     transform:
-        scale(1.03);
+        scale(1.04);
 }
 
 
@@ -1183,19 +1178,13 @@ footer h2 {
     .gallery {
 
         grid-template-columns:
-            1fr;
-    }
-
-
-    .gallery img:nth-child(5) {
-
-        grid-column: span 1;
+            repeat(2, 1fr);
     }
 
 
     .gallery img {
 
-        height: 280px;
+        height: 155px;
     }
 
 
@@ -1778,38 +1767,38 @@ footer h2 {
             <div class="gallery">
 
 
-                <!-- FOTO 1: Tu primera foto real de WhatsApp (con el nombre original adaptado para GitHub) -->
-                <img
-                    src="WhatsApp%20Image%202026-10-31%20at%207.14.06%20PM.jpeg"
-                    alt="Nuestra foto 1"
-                >
-
-
-                <!-- FOTO 2: Tu segunda foto real de WhatsApp (con el nombre original adaptado para GitHub) -->
-                <img
-                    src="WhatsApp%20Image%202026-10-31%20at%207.14.06%20PM%20(1).jpeg"
-                    alt="Nuestra foto 2"
-                >
-
-
-                <!-- FOTO 3: Pinterest -->
+                <!-- FOTO 1 DE PINTEREST -->
                 <img
                     src="https://i.pinimg.com/736x/b8/b5/63/b8b5635131185f453f0913c5469d9ac3.jpg"
                     alt="Pinterest 1"
                 >
 
 
-                <!-- FOTO 4: Pinterest -->
+                <!-- FOTO 2 DE PINTEREST -->
                 <img
                     src="https://i.pinimg.com/736x/ee/8f/cf/ee8fcf04eac8d80fcd6533454e7f4a24.jpg"
                     alt="Pinterest 2"
                 >
 
 
-                <!-- FOTO 5: Pinterest -->
+                <!-- FOTO 3 DE PINTEREST -->
                 <img
                     src="https://i.pinimg.com/736x/f7/02/00/f70200d359e73548ca052c1111ec25c4.jpg"
                     alt="Pinterest 3"
+                >
+
+
+                <!-- FOTO 4 DE PINTEREST -->
+                <img
+                    src="https://i.pinimg.com/736x/37/5f/99/375f9903335e7ee932e056a8b1e4e59f.jpg"
+                    alt="Pinterest 4"
+                >
+
+
+                <!-- FOTO 5 DE PINTEREST -->
+                <img
+                    src="https://i.pinimg.com/736x/5c/70/ea/5c70eac8dd689be9be54b0fc0caabbf3.jpg"
+                    alt="Pinterest 5"
                 >
 
 
